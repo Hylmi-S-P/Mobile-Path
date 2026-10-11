@@ -72,7 +72,7 @@ export const FeaturedHeroCard = ({ onExploreRoadmap, onOpenPromptLab }) => {
           </div>
           <div className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-baseline gap-1.5">
             <span className="font-black">120</span>
-            <span className="text-xl font-black text-outline-white">MIN</span>
+            <span className="text-xl font-bold text-white">MIN</span>
             <span className="text-xs font-bold text-orange-200">/Hari</span>
           </div>
           <div className="text-[10px] text-orange-100/90 font-mono tracking-tight">

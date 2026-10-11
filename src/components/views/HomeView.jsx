@@ -24,8 +24,8 @@ export const HomeView = ({
         onOpenPromptLab={() => onNavigateTab('prompts')}
       />
 
-      {/* Rutinitas Harian 120 Menit Box */}
-      <div className="p-4 rounded-3xl bg-gradient-to-r from-stone-900 to-stone-850 text-white shadow-lg space-y-3">
+      {/* Rutinitas Harian 120 Menit Box (Solid dark, no gradient) */}
+      <div className="p-4 rounded-3xl bg-[#13151D] text-white shadow-lg space-y-3 border border-stone-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400">
@@ -41,26 +41,26 @@ export const HomeView = ({
           </span>
         </div>
 
-        {/* 3 Progress Bars breakdown with Grotesk + Outline accents */}
+        {/* 3 Progress Bars breakdown with solid white MIN text */}
         <div className="grid grid-cols-3 gap-2 pt-1 text-center">
-          <div className="bg-stone-800/80 rounded-2xl p-2.5 border border-stone-700/50">
+          <div className="bg-[#1C1F2B] rounded-2xl p-2.5 border border-stone-800">
             <div className="flex items-center justify-center gap-1">
               <span className="text-base font-black text-amber-400">15</span>
-              <span className="text-[10px] font-black text-outline-white">MIN</span>
+              <span className="text-[10px] font-bold text-white/90">MIN</span>
             </div>
             <div className="text-[10px] text-stone-400 mt-0.5">Teori Dasar</div>
           </div>
-          <div className="bg-orange-950/60 rounded-2xl p-2.5 border border-orange-700/40">
+          <div className="bg-[#261B16] rounded-2xl p-2.5 border border-orange-900/40">
             <div className="flex items-center justify-center gap-1">
               <span className="text-base font-black text-orange-400">60</span>
-              <span className="text-[10px] font-black text-outline-white">MIN</span>
+              <span className="text-[10px] font-bold text-white/90">MIN</span>
             </div>
             <div className="text-[10px] text-orange-300 mt-0.5">Vibe Coding</div>
           </div>
-          <div className="bg-stone-800/80 rounded-2xl p-2.5 border border-stone-700/50">
+          <div className="bg-[#1C1F2B] rounded-2xl p-2.5 border border-stone-800">
             <div className="flex items-center justify-center gap-1">
               <span className="text-base font-black text-stone-200">45</span>
-              <span className="text-[10px] font-black text-outline-white">MIN</span>
+              <span className="text-[10px] font-bold text-white/90">MIN</span>
             </div>
             <div className="text-[10px] text-stone-400 mt-0.5">Code Review</div>
           </div>
@@ -150,43 +150,51 @@ export const HomeView = ({
       <div className="space-y-3 pt-2">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-base font-extrabold text-stone-900 tracking-tight">
+            <h3 className="text-base font-extrabold text-white tracking-tight">
               Capstone Mini Project
             </h3>
             <p className="text-xs text-stone-400">Pilih 1 dari 3 skenario aplikasi portofolio</p>
           </div>
           <button
             onClick={() => onNavigateTab('capstone')}
-            className="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center gap-0.5"
+            className="text-xs font-bold text-orange-400 hover:text-orange-300 flex items-center gap-0.5"
           >
             <span>Detail Rubrik</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 gap-3">
-          {curriculumData.capstoneProjects.map((proj) => (
+        <div className="grid grid-cols-3 gap-2 sm:gap-3">
+          {curriculumData.capstoneProjects.slice(0, 3).map((proj) => (
             <div
               key={proj.id}
               onClick={() => onSelectCapstone(proj)}
-              className="p-4 rounded-3xl bg-gradient-to-r from-stone-900 to-stone-850 text-white shadow-md hover:shadow-lg transition-all cursor-pointer group active:scale-99 border border-stone-800"
+              className="p-3 sm:p-4 rounded-2xl sm:rounded-3xl bg-[#13151D] text-white shadow-md hover:shadow-xl hover:border-orange-500/50 transition-all cursor-pointer group active:scale-95 border border-stone-800 flex flex-col justify-between"
             >
-              <div className="flex items-start justify-between">
-                <div>
-                  <span className="text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/30 px-2.5 py-0.5 rounded-full">
-                    {proj.dataComplexity}
+              <div>
+                <div className="flex items-center justify-between gap-1 mb-2">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-orange-400 bg-orange-500/10 border border-orange-500/30 px-1.5 sm:px-2 py-0.5 rounded-full truncate max-w-full">
+                    {proj.badge || proj.category}
                   </span>
-                  <h4 className="text-sm font-extrabold text-white mt-1.5 group-hover:text-orange-400 transition-colors">
-                    {proj.name}
-                  </h4>
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1C1F2B] group-hover:bg-orange-500 group-hover:text-white flex items-center justify-center text-stone-400 transition-colors flex-shrink-0">
+                    <ArrowRight className="w-3 h-3" />
+                  </div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-stone-800 group-hover:bg-orange-500 group-hover:text-white flex items-center justify-center text-stone-400 transition-colors">
-                  <ArrowRight className="w-4 h-4" />
-                </div>
+
+                <h4 className="text-xs sm:text-sm font-extrabold text-white group-hover:text-orange-400 transition-colors leading-snug line-clamp-2">
+                  {proj.name}
+                </h4>
+
+                <p className="text-[10px] sm:text-xs text-stone-400 mt-1 line-clamp-2 leading-relaxed">
+                  {proj.description}
+                </p>
               </div>
-              <p className="text-xs text-stone-300 mt-2 line-clamp-2">
-                {proj.description}
-              </p>
+
+              <div className="mt-2.5 pt-2 border-t border-stone-800/80">
+                <span className="text-[9px] sm:text-[10px] font-semibold text-orange-300/80 block truncate">
+                  {proj.dataComplexity}
+                </span>
+              </div>
             </div>
           ))}
         </div>
